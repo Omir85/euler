@@ -1,7 +1,6 @@
 package org.omir.euler.problem1;
 
-import java.util.Arrays;
-import java.util.stream.IntStream;
+import org.omir.euler.utils.math.NumberUtils;
 
 /**
  * <pre>
@@ -20,25 +19,9 @@ public class MultiplesOf3Or5 {
 		System.out.println(
 				String.format(
 						"The sum of all the multiples of 3 or 5 below 1000 is %d",
-						sumOfAllMultiplesOfEitherNumberBelow(1000, 3, 5)
+						NumberUtils.sumOfAllMultiplesOfEitherNumberBelow(1000, 3, 5)
 				)
 		);
-	}
-
-	public static boolean isNumberMultipleOf(Integer number, Integer divisor) {
-		return number % divisor == 0;
-	}
-
-	public static boolean isMultipleOfEitherNumber(Integer number, Integer... divisors) {
-		return Arrays.asList(divisors)
-				.stream()
-				.anyMatch(divisor -> isNumberMultipleOf(number, divisor));
-	}
-
-	public static int sumOfAllMultiplesOfEitherNumberBelow(int maximumExcluded, Integer... divisors) {
-		return IntStream.range(1, maximumExcluded)
-				.filter(number -> MultiplesOf3Or5.isMultipleOfEitherNumber(number, divisors))
-				.sum();
 	}
 
 }

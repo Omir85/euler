@@ -1,10 +1,6 @@
 package org.omir.euler.problem2;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.IntStream;
+import org.omir.euler.utils.math.FibonacciSequenceUtils;
 
 /**
  * <pre>
@@ -19,53 +15,8 @@ import java.util.stream.IntStream;
  */
 public class EvenFibonacciNumbers {
 
-	private static Map<Integer, Integer> fibonacciNumbers = new HashMap<>();
-
 	public static void main(String[] args) {
-		System.out.println("The sum of the even-valued Fibonacci terms below four million is " + getSumOfEvenFibonacciTermsBelow(4000000));
-	}
-
-	public static boolean isEven(int i) {
-		return i % 2 == 0;
-	}
-
-	public static int[] getFibonacciNumbers(int range) {
-		return IntStream.iterate(1, i -> i + 1)
-				.limit(range)
-				.map(number -> getFibonacciNumber(number))
-				.toArray();
-	}
-
-	public static int getFibonacciNumber(int number) {
-		Integer key = Integer.valueOf(number);
-		if (fibonacciNumbers.get(key) == null) {
-			fibonacciNumbers.put(
-					key,
-					(number - 2 <= 0)
-							? number
-							: getFibonacciNumber(number - 1) + getFibonacciNumber(number - 2)
-			);
-		}
-		return fibonacciNumbers.get(Integer.valueOf(number));
-	}
-
-	public static int[] getFibonacciNumbersBelow(int limit) {
-		for (int i = 1; getFibonacciNumber(i) < limit; i++) {}
-		return getFibonacciNumbers(fibonacciNumbers.size() - 1);
-	}
-
-	public static int getSumOfEvenFibonacciTermsBelow(int i) {
-		return castArrayToList(getFibonacciNumbersBelow(i)).stream()
-				.filter(number -> EvenFibonacciNumbers.isEven(number))
-				.reduce(0, Integer::sum);
-	}
-
-	public static List<Integer> castArrayToList(int[] array) {
-		List<Integer> list = new ArrayList<>();
-		for (int i : array) {
-			list.add(i);
-		}
-		return list;
+		System.out.println("The sum of the even-valued Fibonacci terms below four million is " + FibonacciSequenceUtils.getSumOfEvenFibonacciTermsBelow(4000000));
 	}
 
 }
