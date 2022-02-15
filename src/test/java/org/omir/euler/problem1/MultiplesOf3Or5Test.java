@@ -7,74 +7,76 @@ public class MultiplesOf3Or5Test {
 
 	@Test
 	public void threeShouldBeAMultipleOfThree() {
-		Integer three = 3;
-		Assert.assertTrue("3 should be a multiple of 3", MultiplesOf3Or5.isMultipleOf3(three));
+		Assert.assertTrue("3 should be a multiple of 3", MultiplesOf3Or5.isNumberMultipleOf(3, 3));
 	}
 
 	@Test
 	public void sixShouldBeAMultipleOfThree() {
-		Integer six = 6;
-		Assert.assertTrue("6 should be a multiple of 3", MultiplesOf3Or5.isMultipleOf3(six));
+		Assert.assertTrue("6 should be a multiple of 3", MultiplesOf3Or5.isNumberMultipleOf(6, 3));
 	}
 
 	@Test
 	public void fiveShouldNotBeAMultipleOfThree() {
-		Integer five = 5;
-		Assert.assertTrue("5 should not be a multiple of 3", !MultiplesOf3Or5.isMultipleOf3(five));
+		Assert.assertTrue("5 should not be a multiple of 3", !MultiplesOf3Or5.isNumberMultipleOf(5, 3));
 	}
 
 	@Test
 	public void fiveShouldBeAMultipleOfFive() {
-		Integer five = 5;
-		Assert.assertTrue("5 should be a multiple of 5", MultiplesOf3Or5.isMultipleOf5(five));
+		Assert.assertTrue("5 should be a multiple of 5", MultiplesOf3Or5.isNumberMultipleOf(5, 5));
 	}
 
 	@Test
 	public void threeShouldNotBeAMultipleOfFive() {
-		Integer three = 3;
-		Assert.assertTrue("3 should not be a multiple of 5", !MultiplesOf3Or5.isMultipleOf5(three));
+		Assert.assertTrue("3 should not be a multiple of 5", !MultiplesOf3Or5.isNumberMultipleOf(3, 5));
 	}
 
 	@Test
 	public void tenShouldBeAMultipleOfFive() {
-		Integer ten = 10;
-		Assert.assertTrue("10 should be a multiple of 5", MultiplesOf3Or5.isMultipleOf5(ten));
+		Assert.assertTrue("10 should be a multiple of 5", MultiplesOf3Or5.isNumberMultipleOf(10, 5));
 	}
 
 	@Test
-	public void fifteenShouldBeAMultipleOfThreeAndFive() {
-		Integer fifteen = 15;
-		Assert.assertTrue("15 should be a multiple of 3 or 5", MultiplesOf3Or5.isMultipleOf3Or5(fifteen));
+	public void fifteenShouldBeAMultipleOfEitherThreeOrFive() {
+		Assert.assertTrue("15 should be a multiple of either 3 or 5", MultiplesOf3Or5.isMultipleOfEitherNumber(15, 3, 5));
 	}
 
 	@Test
-	public void sevenShouldNotBeAMultipleOfThreeAndFive() {
-		Integer seven = 7;
-		Assert.assertTrue("7 should not be a multiple of 3 or 5", !MultiplesOf3Or5.isMultipleOf3Or5(seven));
+	public void OneShouldNotBeAMultipleOfNoNumber() {
+		Assert.assertTrue("1 should not be a multiple of no number", !MultiplesOf3Or5.isMultipleOfEitherNumber(1));
 	}
 
 	@Test
-	public void sumOfAllMultiplesOfThreeOrFiveBelowFiveShouldBe8() {
-		int sum = MultiplesOf3Or5.sumOfAllMultiplesOfThreeOrFiveBelow(5);
-		Assert.assertEquals("Sum of all the multiples of 3 or 5 below 5 should be 8", 3, sum);
+	public void fourteenShouldNotBeAMultipleOfEitherThreeOrFive() {
+		Assert.assertTrue("15 should be a multiple of either 3 or 5", !MultiplesOf3Or5.isMultipleOfEitherNumber(14, 3, 5));
+	}
+
+	@Test
+	public void sevenShouldNotBeAMultipleOfThreeOrFive() {
+		Assert.assertTrue("7 should not be a multiple of 3 or 5", !MultiplesOf3Or5.isMultipleOfEitherNumber(7, 3, 5));
+	}
+
+	@Test
+	public void sumOfAllMultiplesOfThreeOrFiveBelowFiveShouldBe3() {
+		int sum = MultiplesOf3Or5.sumOfAllMultiplesOfEitherNumberBelow(5, 3, 5);
+		Assert.assertEquals("Sum of all the multiples of 3 or 5 below 5 should be 3", 3, sum);
 	}
 
 	@Test
 	public void sumOfAllMultiplesOfThreeOrFiveBelowTenShouldBe23() {
-		int sum = MultiplesOf3Or5.sumOfAllMultiplesOfThreeOrFiveBelow(10);
+		int sum = MultiplesOf3Or5.sumOfAllMultiplesOfEitherNumberBelow(10, 3, 5);
 		Assert.assertEquals("Sum of all the multiples of 3 or 5 below 10 should be 23", 3 + 5 + 6 + 9, sum);
 	}
 
 	@Test
 	public void sumOfAllMultiplesOfThreeOrFiveBelowFifteenShouldBe() {
-		int sum = MultiplesOf3Or5.sumOfAllMultiplesOfThreeOrFiveBelow(15);
+		int sum = MultiplesOf3Or5.sumOfAllMultiplesOfEitherNumberBelow(15, 3, 5);
 		Assert.assertEquals("Sum of all the multiples of 3 or 5 below 10 should be 23", 3 + 5 + 6 + 9 + 10 + 12, sum);
 	}
 
 	@Test
 	public void sumOfAllMultiplesOfThreeOrFiveBelowOneThousandShouldBe233168() {
-		int sum = MultiplesOf3Or5.sumOfAllMultiplesOfThreeOrFiveBelow(1000);
-		Assert.assertEquals("Sum of all the multiples of 3 or 5 below 1000 should be 234168", 233168, sum);
+		int sum = MultiplesOf3Or5.sumOfAllMultiplesOfEitherNumberBelow(1000, 3, 5);
+		Assert.assertEquals("Sum of all the multiples of 3 or 5 below 1000 should be 233168", 233168, sum);
 	}
 
 }
