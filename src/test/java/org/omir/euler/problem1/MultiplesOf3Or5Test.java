@@ -54,9 +54,27 @@ public class MultiplesOf3Or5Test {
 	}
 
 	@Test
-	public void sumOfAllMultiplesOfThreeOrFiveBelowOneThousandShouldBe234168() {
-		int sum = MultiplesOf3Or5.sumOfAllMultiplesOfThreeOrFiveBelowOneThousand();
-		Assert.assertEquals("Sum of all the multiples of 3 or 5 below 1000 should be ...", 234168, sum);
+	public void sumOfAllMultiplesOfThreeOrFiveBelowFiveShouldBe8() {
+		int sum = MultiplesOf3Or5.sumOfAllMultiplesOfThreeOrFiveBelow(5);
+		Assert.assertEquals("Sum of all the multiples of 3 or 5 below 5 should be 8", 3, sum);
+	}
+
+	@Test
+	public void sumOfAllMultiplesOfThreeOrFiveBelowTenShouldBe23() {
+		int sum = MultiplesOf3Or5.sumOfAllMultiplesOfThreeOrFiveBelow(10);
+		Assert.assertEquals("Sum of all the multiples of 3 or 5 below 10 should be 23", 3 + 5 + 6 + 9, sum);
+	}
+
+	@Test
+	public void sumOfAllMultiplesOfThreeOrFiveBelowFifteenShouldBe() {
+		int sum = MultiplesOf3Or5.sumOfAllMultiplesOfThreeOrFiveBelow(15);
+		Assert.assertEquals("Sum of all the multiples of 3 or 5 below 10 should be 23", 3 + 5 + 6 + 9 + 10 + 12, sum);
+	}
+
+	@Test
+	public void sumOfAllMultiplesOfThreeOrFiveBelowOneThousandShouldBe233168() {
+		int sum = MultiplesOf3Or5.sumOfAllMultiplesOfThreeOrFiveBelow(1000);
+		Assert.assertEquals("Sum of all the multiples of 3 or 5 below 1000 should be 234168", 233168, sum);
 	}
 
 }

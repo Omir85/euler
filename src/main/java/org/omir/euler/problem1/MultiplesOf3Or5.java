@@ -19,7 +19,7 @@ public class MultiplesOf3Or5 {
 		System.out.println(
 				String.format(
 						"The sum of all the multiples of 3 or 5 below 1000 is %d",
-						sumOfAllMultiplesOfThreeOrFiveBelowOneThousand()
+						sumOfAllMultiplesOfThreeOrFiveBelow(1000)
 				)
 		);
 	}
@@ -36,8 +36,8 @@ public class MultiplesOf3Or5 {
 		return isMultipleOf3(number) || isMultipleOf5(number);
 	}
 
-	public static int sumOfAllMultiplesOfThreeOrFiveBelowOneThousand() {
-		return IntStream.rangeClosed(1, 1000)
+	public static int sumOfAllMultiplesOfThreeOrFiveBelow(int maximum) {
+		return IntStream.range(1, maximum)
 				.filter(number -> MultiplesOf3Or5.isMultipleOf3Or5(number))
 				.sum();
 	}
