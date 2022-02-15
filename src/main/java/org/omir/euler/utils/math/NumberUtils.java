@@ -20,9 +20,13 @@ public class NumberUtils {
 				.filter(number -> isMultipleOfEitherNumber(number, divisors))
 				.sum();
 	}
-	
+
 	public static boolean isEven(int i) {
-		return i % 2 == 0;
+		return isEven((double) i);
 	}
-	
+
+	public static boolean isEven(double d) {
+		return d % 2 == 0;
+	}
+
 }
