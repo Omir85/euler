@@ -1,5 +1,8 @@
 package org.omir.euler.problem3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.omir.euler.utils.math.NumberUtils;
@@ -55,15 +58,42 @@ public class LargestPrimeFactorTest {
 				0
 		);
 	}
-	
+
 	@Test
 	public void largestPrimeFactorOf82933311Is27644437() {
 		Assert.assertEquals(
-				"Largest prime factors of fourteen should be seven",
+				"Largest prime factors of 82933311 should be 27644437",
 				27644437,
 				NumberUtils.largestPrimeFactorOf(82933311),
 				0
 		);
+	}
+
+	@Test
+	public void factorsOf82933311AreThreeAnd27644437() {
+		List<Double> expected = new ArrayList<>();
+		expected.add(3d);
+		expected.add(27644437d);
+		Assert.assertEquals(
+				"Factors of 82933311 should be 3 and 27644437",
+				expected,
+				NumberUtils.getPrimeFactorsOf(82933311)
+		);
+	}
+
+	@Test
+	public void factorsOfTwoIsTwo() {
+		List<Double> expected = new ArrayList<>();
+		expected.add(2d);
+		Assert.assertEquals(expected, NumberUtils.getPrimeFactorsOf(2));
+	}
+
+	@Test
+	public void factorsOfSixAreTwoAndThree() {
+		List<Double> expected = new ArrayList<>();
+		expected.add(2d);
+		expected.add(3d);
+		Assert.assertEquals(expected, NumberUtils.getPrimeFactorsOf(6));
 	}
 
 	@Test

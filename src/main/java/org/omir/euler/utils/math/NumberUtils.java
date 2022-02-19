@@ -1,6 +1,8 @@
 package org.omir.euler.utils.math;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.DoublePredicate;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
@@ -31,19 +33,26 @@ public class NumberUtils {
 		return i -> number % i == 0;
 	}
 
-	public static double largestPrimeFactorOf(double number) {
+	public static List<Double> getPrimeFactorsOf(double number) {
+		List<Double> list = new ArrayList<>();
 		if (isPrime(number)) {
-			return number;
+			list.add(number);
+			return list;
 		}
-		double seed = Math.ceil(number / 2);
-		if (number > 10000) {
-			seed = Math.ceil(Math.sqrt(number));
-		}
-		return DoubleStream.iterate(seed, d -> d - 1)
+		double divisor = DoubleStream.iterate(2, d -> d + 1)
+				.limit((long) number)
 				.filter(divides(number))
 				.filter(NumberUtils::isPrime)
 				.findFirst()
 				.orElse(0);
+		list.add(divisor);
+		list.addAll(getPrimeFactorsOf(number / divisor));
+		return list;
+	}
+
+	public static double largestPrimeFactorOf(double number) {
+		List<Double> primeFactors = getPrimeFactorsOf(number);
+		return primeFactors.get(primeFactors.size() - 1);
 	}
 
 	public static boolean isPrime(double number) {
