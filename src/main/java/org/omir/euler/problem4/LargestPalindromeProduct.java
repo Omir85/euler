@@ -1,6 +1,6 @@
 package org.omir.euler.problem4;
 
-import org.omir.euler.utils.string.StringUtils;
+import org.omir.euler.utils.math.NumberUtils;
 
 /**
  * <pre>
@@ -14,30 +14,16 @@ import org.omir.euler.utils.string.StringUtils;
  */
 public class LargestPalindromeProduct {
 
-	private static final String RESULT_TEMPLATE = "The largest palindrome made from the product of two 3-digit numbers is %s and it is the product of %s and %s";
+	private static final String LARGEST_PALINDROME_PRODUCT_RESULT_TEMPLATE = "The largest palindrome made from the product of two 3-digit numbers is %s and it is the product of %s and %s";
 
 	public static void main(String[] args) {
-		int largestPalindromeProductOfTwoThreeDigitNumbers = 0;
-		int solutionI = 0;
-		int solutionJ = 0;
-		for (int i = 999; i > 99; i--) {
-			for (int j = 999; j > 99; j--) {
-				int product = i * j;
-				if (StringUtils.isPalindrome(product)) {
-					if (product > largestPalindromeProductOfTwoThreeDigitNumbers) {
-						largestPalindromeProductOfTwoThreeDigitNumbers = product;
-						solutionI = i;
-						solutionJ = j;
-					}
-				}
-			}
-		}
+		int[] results = NumberUtils.computeLargestPalindromeProduct();
 		System.out.println(
 				String.format(
-						RESULT_TEMPLATE,
-						largestPalindromeProductOfTwoThreeDigitNumbers,
-						solutionI,
-						solutionJ
+						LARGEST_PALINDROME_PRODUCT_RESULT_TEMPLATE,
+						results[0],
+						results[1],
+						results[2]
 				)
 		);
 	}

@@ -7,6 +7,8 @@ import java.util.function.DoublePredicate;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
+import org.omir.euler.utils.string.StringUtils;
+
 public class NumberUtils {
 
 	public static boolean isNumberMultipleOf(Integer number, Integer divisor) {
@@ -60,6 +62,25 @@ public class NumberUtils {
 				.limit((long) Math.ceil(Math.sqrt(number)))
 				.filter(i -> i != number)
 				.noneMatch(divides(number));
+	}
+
+	public static int[] computeLargestPalindromeProduct() {
+		int largestPalindromeProductOfTwoThreeDigitNumbers = 0;
+		int solutionI = 0;
+		int solutionJ = 0;
+		for (int i = 999; i > 99; i--) {
+			for (int j = 999; j > 99; j--) {
+				int product = i * j;
+				if (StringUtils.isPalindrome(product)) {
+					if (product > largestPalindromeProductOfTwoThreeDigitNumbers) {
+						largestPalindromeProductOfTwoThreeDigitNumbers = product;
+						solutionI = i;
+						solutionJ = j;
+					}
+				}
+			}
+		}
+		return new int[] { largestPalindromeProductOfTwoThreeDigitNumbers, solutionI, solutionJ };
 	}
 
 }
