@@ -64,12 +64,14 @@ public class NumberUtils {
 				.noneMatch(divides(number));
 	}
 
-	public static int[] computeLargestPalindromeProduct() {
+	public static int[] computeLargestPalindromeProduct(int digits) {
 		int largestPalindromeProductOfTwoThreeDigitNumbers = 0;
 		int solutionI = 0;
 		int solutionJ = 0;
-		for (int i = 999; i > 99; i--) {
-			for (int j = 999; j > 99; j--) {
+		int max = getLargestNumberWithDigits(digits);
+		int min = getSmallestNumberWithDigits(digits);
+		for (int i = max; i > min; i--) {
+			for (int j = max; j > min; j--) {
 				int product = i * j;
 				if (StringUtils.isPalindrome(product)) {
 					if (product > largestPalindromeProductOfTwoThreeDigitNumbers) {
@@ -81,6 +83,14 @@ public class NumberUtils {
 			}
 		}
 		return new int[] { largestPalindromeProductOfTwoThreeDigitNumbers, solutionI, solutionJ };
+	}
+
+	private static int getLargestNumberWithDigits(int digits) {
+		return (int) (Math.pow(10, digits) - 1);
+	}
+
+	private static int getSmallestNumberWithDigits(int digits) {
+		return getLargestNumberWithDigits(digits - 1);
 	}
 
 }

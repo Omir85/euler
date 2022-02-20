@@ -14,13 +14,15 @@ import org.omir.euler.utils.math.NumberUtils;
  */
 public class LargestPalindromeProduct {
 
-	private static final String LARGEST_PALINDROME_PRODUCT_RESULT_TEMPLATE = "The largest palindrome made from the product of two 3-digit numbers is %s and it is the product of %s and %s";
+	private static final String LARGEST_PALINDROME_PRODUCT_RESULT_TEMPLATE = "The largest palindrome made from the product of two %s-digit numbers is %s and it is the product of %s and %s";
 
 	public static void main(String[] args) {
-		int[] results = NumberUtils.computeLargestPalindromeProduct();
+		int digits = 4;
+		int[] results = NumberUtils.computeLargestPalindromeProduct(digits);
 		System.out.println(
 				String.format(
 						LARGEST_PALINDROME_PRODUCT_RESULT_TEMPLATE,
+						digits,
 						results[0],
 						results[1],
 						results[2]

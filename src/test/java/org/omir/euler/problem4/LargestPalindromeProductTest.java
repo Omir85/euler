@@ -23,8 +23,13 @@ public class LargestPalindromeProductTest {
 	}
 
 	@Test
+	public void number9009IsTheLargestPalindromeProductOfTwoTwoDigitNumbers() {
+		Assert.assertEquals(9009, NumberUtils.computeLargestPalindromeProduct(2)[0]);
+	}
+
+	@Test
 	public void number906609IsTheLargestPalindromeProductOfTwoThreeDigitNumbers() {
-		Assert.assertEquals(906609, NumberUtils.computeLargestPalindromeProduct()[0]);
+		Assert.assertEquals(906609, NumberUtils.computeLargestPalindromeProduct(3)[0]);
 	}
 
 }
