@@ -2,8 +2,12 @@ package org.omir.euler.utils.math;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.BinaryOperator;
 import java.util.function.DoublePredicate;
+import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
@@ -91,6 +95,58 @@ public class NumberUtils {
 
 	private static int getSmallestNumberWithDigits(int digits) {
 		return getLargestNumberWithDigits(digits - 1);
+	}
+
+	public static Map<Double, Integer> getPrimeFactorsMap(double number) {
+		Map<Double, Integer> primeFactorsMap = new HashMap<>();
+		List<Double> primeFactors = getPrimeFactorsOf(number);
+		for (Double primeFactor : primeFactors) {
+			if (!primeFactorsMap.containsKey(primeFactor)) {
+				primeFactorsMap.put(primeFactor, 0);
+			}
+			primeFactorsMap.put(primeFactor, primeFactorsMap.get(primeFactor) + 1);
+		}
+		return primeFactorsMap;
+	}
+
+	public static Double product(List<Double> list) {
+		return list.stream()
+				.reduce(1d, multiply());
+	}
+
+	private static BinaryOperator<Double> multiply() {
+		return (product, i) -> product * i;
+	}
+
+	public static List<Double> getNumbersFromOneTo(long limit) {
+		return DoubleStream.iterate(1, i -> i + 1)
+				.limit(limit)
+				.boxed()
+				.collect(Collectors.toList());
+	}
+
+	public static Map<Double, Integer> getReducedPrimeFactorsMap(double limit) {
+		Map<Double, Integer> primeFactorsMap = new HashMap<>();
+		List<Double> divisors = NumberUtils.getNumbersFromOneTo((long) limit);
+		double product = NumberUtils.product(divisors);
+		List<Double> primeFactors = getPrimeFactorsOf(product);
+		for (Double primeFactor : primeFactors) {
+			if (!primeFactorsMap.containsKey(primeFactor)) {
+				primeFactorsMap.put(primeFactor, 0);
+			}
+			if (Math.pow(primeFactor, primeFactorsMap.get(primeFactor) + 1) < limit) {
+				primeFactorsMap.put(primeFactor, primeFactorsMap.get(primeFactor) + 1);
+			}
+		}
+		return primeFactorsMap;
+	}
+
+	public static int product(Map<Double, Integer> map) {
+		int product = 1;
+		for (Double key : map.keySet()) {
+			product *= Math.pow(key, map.get(key));
+		}
+		return product;
 	}
 
 }
