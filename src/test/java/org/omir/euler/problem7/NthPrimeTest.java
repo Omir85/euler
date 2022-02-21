@@ -31,9 +31,10 @@ public class NthPrimeTest {
 		Assert.assertEquals("The 10001st prime number should be 104743", 104743, NumberUtils.getNthPrime(10001), 0);
 	}
 
-	@Test
-	public void the100001stPrime() {
-		Assert.assertEquals("The 100001st prime number should be 1299721", 1299721, NumberUtils.getNthPrime(100001), 0);
-	}
+	// takes about 4s
+	// @Test
+	// public void the100001stPrime() {
+	// Assert.assertEquals("The 100001st prime number should be 1299721", 1299721, NumberUtils.getNthPrime(100001), 0);
+	// }
 
 }
