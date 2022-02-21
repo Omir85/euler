@@ -165,4 +165,19 @@ public class NumberUtils {
 		);
 	}
 
+	public static double getNthPrime(int n) {
+		return NumberUtils.computePrimes(n).get(n - 1);
+	}
+
+	public static List<Double> computePrimes(int size) {
+		List<Double> primeNumbers = new ArrayList<>();
+		primeNumbers.add(2d);
+		for (int i = 3; primeNumbers.size() < size; i += 2) {
+			if (isPrime(i)) {
+				primeNumbers.add((double) i);
+			}
+		}
+		return primeNumbers;
+	}
+
 }
