@@ -1,6 +1,6 @@
 package org.omir.euler.problem6;
 
-import java.util.stream.DoubleStream;
+import org.omir.euler.utils.math.NumberUtils;
 
 /**
  * <pre>
@@ -25,23 +25,7 @@ public class SumSquareDifference {
 		double limit = 100;
 		System.out.println(
 				"The difference between the sum of the squares of the first one hundred natural numbers and the square of the sum is "
-				+ (int) (squareOfSum(limit) - sumOfSquares(limit))
-		);
-	}
-
-	public static double sumOfSquares(double limit) {
-		return DoubleStream.iterate(1, d -> d + 1)
-				.limit((long) limit)
-				.map(d -> Math.pow(d, 2))
-				.reduce(0, (total, d) -> total + d);
-	}
-
-	public static double squareOfSum(double limit) {
-		return Math.pow(
-				DoubleStream.iterate(1, d -> d + 1)
-						.limit((long)limit)
-						.reduce(0, (total, d) -> total + d)
-				, 2
+				+ (int) (NumberUtils.squareOfSum(limit) - NumberUtils.sumOfSquares(limit))
 		);
 	}
 
