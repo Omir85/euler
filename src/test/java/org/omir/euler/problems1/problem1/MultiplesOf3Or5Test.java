@@ -42,7 +42,7 @@ public class MultiplesOf3Or5Test {
 	}
 
 	@Test
-	public void OneShouldNotBeAMultipleOfNoNumber() {
+	public void oneShouldNotBeAMultipleOfNoNumber() {
 		Assert.assertTrue("1 should not be a multiple of no number", !NumberUtils.isMultipleOfEitherNumber(1));
 	}
 
