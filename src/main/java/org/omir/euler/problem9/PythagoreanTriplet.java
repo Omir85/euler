@@ -17,8 +17,4 @@ public class PythagoreanTriplet {
 
 	private double c;
 
-	public double getProduct() {
-		return a * b * c;
-	}
-
 }

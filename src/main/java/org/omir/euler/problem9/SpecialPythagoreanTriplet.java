@@ -2,6 +2,8 @@ package org.omir.euler.problem9;
 
 import java.util.Optional;
 
+import org.omir.euler.utils.math.PythagoreanAlgebraUtils;
+
 /**
  * <pre>
  * A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
@@ -19,7 +21,7 @@ public class SpecialPythagoreanTriplet {
 	private static final int target = 1000;
 
 	public static void main(String[] args) {
-		displayResult(findPythagoreanTripletWhichProductIs(target), target);
+		displayResult(PythagoreanAlgebraUtils.findPythagoreanTripletWhichProductIs(target), target);
 	}
 
 	private static void displayResult(Optional<PythagoreanTriplet> solution, int target) {
@@ -37,48 +39,16 @@ public class SpecialPythagoreanTriplet {
 				(int) solution.getB(),
 				(int) solution.getC(),
 				target,
-				(int) solution.getProduct()
+				(int) PythagoreanAlgebraUtils.getProduct(solution)
 		);
-	}
-
-	public static Optional<PythagoreanTriplet> findPythagoreanTripletWhichProductIs(int target) {
-		for (int a = 1; a < target; a++) {
-			for (int b = 2; b < target; b++) {
-				double c = getHypothenuse(a, b);
-				if (
-						isInteger(c)
-						&& isPythagoreanTriplet(a, b, c)
-						&& (a + b + c == target)
-				) {
-					return Optional.of(new PythagoreanTriplet(a, b, c));
-				}
-			}
-		}
-		return Optional.empty();
-	}
-
-	public static boolean isPythagoreanTriplet(double a, double b, double c) {
-		return square(a) + square(b) == square(c);
 	}
 
 	public static double square(double i) {
 		return i * i;
 	}
 
-	public static double getHypothenuse(int a, int b) {
-		return Math.sqrt(square(a) + square(b));
-	}
-
 	public static boolean isInteger(double c) {
 		return (int) c == c;
-	}
-
-	public static boolean isPythagoreanTriplet(PythagoreanTriplet pythagoreanTriplet) {
-		return isPythagoreanTriplet(
-				pythagoreanTriplet.getA(),
-				pythagoreanTriplet.getB(),
-				pythagoreanTriplet.getC()
-		);
 	}
 
 }
