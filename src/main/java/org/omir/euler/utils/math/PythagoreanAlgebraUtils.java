@@ -2,7 +2,7 @@ package org.omir.euler.utils.math;
 
 import java.util.Optional;
 
-import org.omir.euler.problem9.PythagoreanTriplet;
+import org.omir.euler.problems1.problem9.PythagoreanTriplet;
 
 public class PythagoreanAlgebraUtils {
 
@@ -44,5 +44,5 @@ public class PythagoreanAlgebraUtils {
 		}
 		return Optional.empty();
 	}
-	
+
 }
