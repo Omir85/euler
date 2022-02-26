@@ -3,7 +3,6 @@ package org.omir.euler.utils.math;
 import java.util.Optional;
 
 import org.omir.euler.problem9.PythagoreanTriplet;
-import org.omir.euler.problem9.SpecialPythagoreanTriplet;
 
 public class PythagoreanAlgebraUtils {
 
@@ -16,7 +15,7 @@ public class PythagoreanAlgebraUtils {
 	}
 
 	public static boolean isPythagoreanTriplet(double a, double b, double c) {
-		return SpecialPythagoreanTriplet.square(a) + SpecialPythagoreanTriplet.square(b) == SpecialPythagoreanTriplet.square(c);
+		return NumberUtils.square(a) + NumberUtils.square(b) == NumberUtils.square(c);
 	}
 
 	public static double getProduct(PythagoreanTriplet pythagoreanTriplet) {
@@ -27,7 +26,7 @@ public class PythagoreanAlgebraUtils {
 	}
 
 	public static double getHypothenuse(int a, int b) {
-		return Math.sqrt(SpecialPythagoreanTriplet.square(a) + SpecialPythagoreanTriplet.square(b));
+		return Math.sqrt(NumberUtils.square(a) + NumberUtils.square(b));
 	}
 
 	public static Optional<PythagoreanTriplet> findPythagoreanTripletWhichProductIs(int target) {
@@ -35,7 +34,7 @@ public class PythagoreanAlgebraUtils {
 			for (int b = 2; b < target; b++) {
 				double c = getHypothenuse(a, b);
 				if (
-						SpecialPythagoreanTriplet.isInteger(c)
+						NumberUtils.isInteger(c)
 						&& isPythagoreanTriplet(a, b, c)
 						&& (a + b + c == target)
 				) {

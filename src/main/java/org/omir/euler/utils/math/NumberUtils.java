@@ -218,4 +218,12 @@ public class NumberUtils {
 		);
 	}
 
+	public static double square(double i) {
+		return i * i;
+	}
+
+	public static boolean isInteger(double c) {
+		return (int) c == c;
+	}
+
 }

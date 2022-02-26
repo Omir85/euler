@@ -2,6 +2,7 @@ package org.omir.euler.problem9;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.omir.euler.utils.math.NumberUtils;
 import org.omir.euler.utils.math.PythagoreanAlgebraUtils;
 
 public class SpecialPythagoreanTripletTest {
@@ -18,7 +19,7 @@ public class SpecialPythagoreanTripletTest {
 
 	@Test
 	public void squareOfThreeIsNine() {
-		Assert.assertEquals(9, SpecialPythagoreanTriplet.square(3), 0);
+		Assert.assertEquals(9, NumberUtils.square(3), 0);
 	}
 
 	@Test
@@ -34,13 +35,13 @@ public class SpecialPythagoreanTripletTest {
 	@Test
 	public void numbersThreeAndFourGiveAnIntegerHypotenuse() {
 		double c = PythagoreanAlgebraUtils.getHypothenuse(3, 4);
-		Assert.assertTrue(SpecialPythagoreanTriplet.isInteger(c));
+		Assert.assertTrue(NumberUtils.isInteger(c));
 	}
 
 	@Test
 	public void numbersThreeAndFiveDoNotGiveAnIntegerHypotenuse() {
 		double c = PythagoreanAlgebraUtils.getHypothenuse(3, 5);
-		Assert.assertFalse(SpecialPythagoreanTriplet.isInteger(c));
+		Assert.assertFalse(NumberUtils.isInteger(c));
 	}
 
 	@Test
