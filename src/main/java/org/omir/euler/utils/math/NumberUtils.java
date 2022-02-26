@@ -180,4 +180,42 @@ public class NumberUtils {
 		return primeNumbers;
 	}
 
+	public static double getLargestProduct(List<String> trimmed) {
+		double product = 0;
+		for (String string : trimmed) {
+			double productOfSplit = NumberUtils.productOfStrings(StringUtils.split(string));
+			if (product < productOfSplit) {
+				product = productOfSplit;
+			}
+		}
+		return product;
+	}
+
+	public static double getLargestProduct(List<String> trimmed, int size) {
+		List<String> sizedStrings = new ArrayList<>();
+		for (String string : trimmed) {
+			for (int i = 0; i + size - 1 < string.length(); i++) {
+				sizedStrings.add(string.substring(i, i + size));
+			}
+		}
+		return getLargestProduct(sizedStrings);
+	}
+
+	public static double getLargestProduct(String number, int size) {
+		return getLargestProduct(
+				StringUtils.trimOutShortStrings(
+						StringUtils.split(number, "0"),
+						size
+				), size
+		);
+	}
+
+	public static double productOfStrings(List<String> list) {
+		return product(
+				list.stream()
+						.map(s -> Double.valueOf(s))
+						.collect(Collectors.toList())
+		);
+	}
+
 }

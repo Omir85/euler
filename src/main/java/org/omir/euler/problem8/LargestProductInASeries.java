@@ -1,9 +1,5 @@
 package org.omir.euler.problem8;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.omir.euler.utils.math.NumberUtils;
 
 /**
@@ -61,68 +57,7 @@ public class LargestProductInASeries {
 			+ "71636269561882670428252483600823257530420752963450";
 
 	public static void main(String[] args) {
-		System.out.println("The largest product is " + (int) getLargestProduct(THOUSAND_DIGIT_NUMBER, 13));
-	}
-
-	public static List<String> split(String input, String string) {
-		List<String> list = new ArrayList<>();
-		String[] split = input.split(string);
-		for (String element : split) {
-			list.add(element);
-		}
-		return list;
-	}
-
-	public static List<String> split(String input) {
-		List<String> list = new ArrayList<>();
-		for (int i = 0; i < input.length(); i++) {
-			list.add(input.substring(i, i + 1));
-		}
-		return list;
-	}
-
-	public static double product(List<String> list) {
-		return NumberUtils.product(
-				list.stream()
-						.map(s -> Double.valueOf(s))
-						.collect(Collectors.toList()));
-	}
-
-	public static List<String> trimOutShortStrings(List<String> list, int size) {
-		List<String> trimmed = list.stream()
-				.filter(s -> s.length() >= size)
-				.collect(Collectors.toList());
-		return trimmed;
-	}
-
-	public static double getLargestProduct(String number, int size) {
-		return getLargestProduct(
-				trimOutShortStrings(
-						split(number, "0"),
-						size
-				), size
-		);
-	}
-
-	public static double getLargestProduct(List<String> trimmed, int size) {
-		List<String> sizedStrings = new ArrayList<>();
-		for (String string : trimmed) {
-			for (int i = 0; i + size - 1 < string.length(); i++) {
-				sizedStrings.add(string.substring(i, i + size));
-			}
-		}
-		return getLargestProduct(sizedStrings);
-	}
-
-	public static double getLargestProduct(List<String> trimmed) {
-		double product = 0;
-		for (String string : trimmed) {
-			double productOfSplit = product(split(string));
-			if (product < productOfSplit) {
-				product = productOfSplit;
-			}
-		}
-		return product;
+		System.out.println("The largest product is " + (int) NumberUtils.getLargestProduct(THOUSAND_DIGIT_NUMBER, 13));
 	}
 
 }
