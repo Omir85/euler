@@ -10,6 +10,7 @@ import java.util.function.DoublePredicate;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
 import org.omir.euler.utils.string.StringUtils;
 
@@ -224,6 +225,16 @@ public class NumberUtils {
 
 	public static boolean isInteger(double c) {
 		return (int) c == c;
+	}
+
+	public static long sumOfPrimesBelow(int limit) {
+		if (limit == 2)
+			return 2;
+		return 2 + LongStream.iterate(3, i -> i + 2)
+				.limit(limit)
+				.filter(number -> number <= limit)
+				.filter(number -> isPrime(number))
+				.sum();
 	}
 
 }
