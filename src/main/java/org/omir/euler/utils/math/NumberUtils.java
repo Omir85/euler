@@ -115,6 +115,14 @@ public class NumberUtils {
 				.reduce(1d, multiply());
 	}
 
+	public static int product(Map<Double, Integer> map) {
+		int product = 1;
+		for (Double key : map.keySet()) {
+			product *= Math.pow(key, map.get(key));
+		}
+		return product;
+	}
+
 	private static BinaryOperator<Double> multiply() {
 		return (product, i) -> product * i;
 	}
@@ -142,14 +150,6 @@ public class NumberUtils {
 		return primeFactorsMap;
 	}
 
-	public static int product(Map<Double, Integer> map) {
-		int product = 1;
-		for (Double key : map.keySet()) {
-			product *= Math.pow(key, map.get(key));
-		}
-		return product;
-	}
-
 	public static double sumOfSquares(double limit) {
 		return DoubleStream.iterate(1, d -> d + 1)
 				.limit((long) limit)
@@ -161,8 +161,8 @@ public class NumberUtils {
 		return Math.pow(
 				DoubleStream.iterate(1, d -> d + 1)
 						.limit((long)limit)
-						.reduce(0, (total, d) -> total + d)
-				, 2
+						.reduce(0, (total, d) -> total + d),
+				2
 		);
 	}
 
@@ -228,8 +228,9 @@ public class NumberUtils {
 	}
 
 	public static long sumOfPrimesBelow(int limit) {
-		if (limit == 2)
+		if (limit == 2) {
 			return 2;
+		}
 		return 2 + LongStream.iterate(3, i -> i + 2)
 				.limit(limit)
 				.filter(number -> number <= limit)
