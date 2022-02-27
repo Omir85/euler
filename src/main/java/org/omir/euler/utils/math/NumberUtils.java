@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.function.BinaryOperator;
 import java.util.function.DoublePredicate;
 import java.util.stream.Collectors;
@@ -117,8 +118,8 @@ public class NumberUtils {
 
 	public static int product(Map<Double, Integer> map) {
 		int product = 1;
-		for (Double key : map.keySet()) {
-			product *= Math.pow(key, map.get(key));
+		for (Entry<Double, Integer> entry : map.entrySet()) {
+			product *= Math.pow(entry.getKey(), entry.getValue());
 		}
 		return product;
 	}

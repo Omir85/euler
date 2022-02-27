@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -26,8 +27,8 @@ public class SmallestMultipleTest {
 		int number = 4;
 		Map<Double, Integer> expected = new HashMap<>();
 		expected.put(2d, 2);
-		for (Double key : expected.keySet()) {
-			Assert.assertEquals(expected.get(key), NumberUtils.getPrimeFactorsMap(number).get(key));
+		for (Entry<Double, Integer> entry : expected.entrySet()) {
+			Assert.assertEquals(entry.getValue(), NumberUtils.getPrimeFactorsMap(number).get(entry.getKey()));
 		}
 	}
 
@@ -37,8 +38,8 @@ public class SmallestMultipleTest {
 		Map<Double, Integer> expected = new HashMap<>();
 		expected.put(2d, 1);
 		expected.put(3d, 1);
-		for (Double key : expected.keySet()) {
-			Assert.assertEquals(expected.get(key), NumberUtils.getPrimeFactorsMap(number).get(key));
+		for (Entry<Double, Integer> entry : expected.entrySet()) {
+			Assert.assertEquals(entry.getValue(), NumberUtils.getPrimeFactorsMap(number).get(entry.getKey()));
 		}
 	}
 
@@ -47,8 +48,8 @@ public class SmallestMultipleTest {
 		int number = 9;
 		Map<Double, Integer> expected = new HashMap<>();
 		expected.put(3d, 2);
-		for (Double key : expected.keySet()) {
-			Assert.assertEquals(expected.get(key), NumberUtils.getPrimeFactorsMap(number).get(key));
+		for (Entry<Double, Integer> entry : expected.entrySet()) {
+			Assert.assertEquals(entry.getValue(), NumberUtils.getPrimeFactorsMap(number).get(entry.getKey()));
 		}
 	}
 
@@ -58,8 +59,8 @@ public class SmallestMultipleTest {
 		Map<Double, Integer> expected = new HashMap<>();
 		expected.put(2d, 2);
 		expected.put(3d, 1);
-		for (Double key : expected.keySet()) {
-			Assert.assertEquals(expected.get(key), NumberUtils.getPrimeFactorsMap(number).get(key));
+		for (Entry<Double, Integer> entry : expected.entrySet()) {
+			Assert.assertEquals(entry.getValue(), NumberUtils.getPrimeFactorsMap(number).get(entry.getKey()));
 		}
 	}
 
@@ -71,8 +72,8 @@ public class SmallestMultipleTest {
 		expected.put(3d, 2);
 		expected.put(5d, 1);
 		expected.put(7d, 1);
-		for (Double key : expected.keySet()) {
-			Assert.assertEquals(expected.get(key), NumberUtils.getPrimeFactorsMap(number).get(key));
+		for (Entry<Double, Integer> entry : expected.entrySet()) {
+			Assert.assertEquals(entry.getValue(), NumberUtils.getPrimeFactorsMap(number).get(entry.getKey()));
 		}
 	}
 
