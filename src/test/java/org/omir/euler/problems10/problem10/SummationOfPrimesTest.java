@@ -36,5 +36,20 @@ public class SummationOfPrimesTest {
 		Assert.assertEquals(12295969, NumberUtils.sumOfPrimesBelow(15000), 0);
 		Assert.assertEquals(13969505, NumberUtils.sumOfPrimesBelow(16000), 0);
 	}
+	
+	@Test
+	public void sumOfPrimesBelowTwoMillion() {
+		Assert.assertEquals(142913828922d, SummationOfPrimes.sumOfPrimesBelowTwoMillion(), 0);
+	}
+	
+	@Test
+	public void displaySolution() {
+		Assert.assertEquals(SummationOfPrimes.SOLUTION_PREFIX + "142913828922", SummationOfPrimes.displaySolution());
+	}
+	
+	@Test
+	public void main() {
+		SummationOfPrimes.main(null);
+	}
 
 }

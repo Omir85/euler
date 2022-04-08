@@ -18,7 +18,7 @@ public class MultiplesOf3Or5Test {
 
 	@Test
 	public void fiveShouldNotBeAMultipleOfThree() {
-		Assert.assertTrue("5 should not be a multiple of 3", !NumberUtils.isNumberMultipleOf(5, 3));
+		Assert.assertFalse("5 should not be a multiple of 3", NumberUtils.isNumberMultipleOf(5, 3));
 	}
 
 	@Test
@@ -28,7 +28,7 @@ public class MultiplesOf3Or5Test {
 
 	@Test
 	public void threeShouldNotBeAMultipleOfFive() {
-		Assert.assertTrue("3 should not be a multiple of 5", !NumberUtils.isNumberMultipleOf(3, 5));
+		Assert.assertFalse("3 should not be a multiple of 5", NumberUtils.isNumberMultipleOf(3, 5));
 	}
 
 	@Test
@@ -43,17 +43,17 @@ public class MultiplesOf3Or5Test {
 
 	@Test
 	public void oneShouldNotBeAMultipleOfNoNumber() {
-		Assert.assertTrue("1 should not be a multiple of no number", !NumberUtils.isMultipleOfEitherNumber(1));
+		Assert.assertFalse("1 should not be a multiple of no number", NumberUtils.isMultipleOfEitherNumber(1));
 	}
 
 	@Test
 	public void fourteenShouldNotBeAMultipleOfEitherThreeOrFive() {
-		Assert.assertTrue("15 should be a multiple of either 3 or 5", !NumberUtils.isMultipleOfEitherNumber(14, 3, 5));
+		Assert.assertFalse("15 should be a multiple of either 3 or 5", NumberUtils.isMultipleOfEitherNumber(14, 3, 5));
 	}
 
 	@Test
 	public void sevenShouldNotBeAMultipleOfThreeOrFive() {
-		Assert.assertTrue("7 should not be a multiple of 3 or 5", !NumberUtils.isMultipleOfEitherNumber(7, 3, 5));
+		Assert.assertFalse("7 should not be a multiple of 3 or 5", NumberUtils.isMultipleOfEitherNumber(7, 3, 5));
 	}
 
 	@Test
