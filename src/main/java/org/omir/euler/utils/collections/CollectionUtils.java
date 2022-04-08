@@ -5,6 +5,8 @@ import java.util.List;
 
 public class CollectionUtils {
 	
+	private CollectionUtils() {}
+	
 	public static List<Integer> castArrayToList(int[] array) {
 		List<Integer> list = new ArrayList<>();
 		for (int i : array) {

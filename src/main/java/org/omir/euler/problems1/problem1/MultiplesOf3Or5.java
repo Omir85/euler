@@ -15,11 +15,14 @@ import org.omir.euler.utils.math.NumberUtils;
  */
 public class MultiplesOf3Or5 {
 
+	private MultiplesOf3Or5() {}
+	
 	public static void main(String[] args) {
+		int sumOfAllMultiplesOfEither3Or5Below1000 = NumberUtils.sumOfAllMultiplesOfEitherNumberBelow(1000, 3, 5);
 		System.out.println(
 				String.format(
 						"The sum of all the multiples of 3 or 5 below 1000 is %d",
-						NumberUtils.sumOfAllMultiplesOfEitherNumberBelow(1000, 3, 5)
+						sumOfAllMultiplesOfEither3Or5Below1000
 				)
 		);
 	}

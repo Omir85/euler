@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 public class StringUtils {
 
+	private StringUtils() {}
+	
 	public static boolean isPalindrome(int i) {
 		String stringRepresentation = String.valueOf(i);
 		return stringRepresentation.equals(reverse(stringRepresentation));
