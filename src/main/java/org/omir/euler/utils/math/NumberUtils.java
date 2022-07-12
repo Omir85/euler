@@ -64,7 +64,7 @@ public class NumberUtils {
 	}
 
 	public static boolean isPrime(double number) {
-		return DoubleStream.iterate(2, d -> d + 1)
+		return number > 0 && number != 1 && DoubleStream.iterate(2, d -> d + 1)
 				.limit((long) Math.ceil(Math.sqrt(number)))
 				.filter(i -> i != number)
 				.noneMatch(divides(number));
@@ -168,13 +168,14 @@ public class NumberUtils {
 	}
 
 	public static double getNthPrime(int n) {
-		return NumberUtils.computePrimes(n).get(n - 1);
+		return NumberUtils.computePrimes(n).get(n);
 	}
 
 	public static List<Double> computePrimes(int size) {
 		List<Double> primeNumbers = new ArrayList<>();
 		primeNumbers.add(2d);
-		for (int i = 3; primeNumbers.size() < size; i += 2) {
+		primeNumbers.add(2d);
+		for (int i = 3; primeNumbers.size() < size + 1; i += 2) {
 			if (isPrime(i)) {
 				primeNumbers.add((double) i);
 			}

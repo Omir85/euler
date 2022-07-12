@@ -98,7 +98,7 @@ public class LargestPrimeFactorTest {
 
 	@Test
 	public void oneIsPrime() {
-		Assert.assertTrue("1 should be prime", NumberUtils.isPrime(1));
+		Assert.assertTrue("1 should not be prime", !NumberUtils.isPrime(1));
 	}
 
 	@Test
