@@ -240,4 +240,21 @@ public class NumberUtils {
 				.sum();
 	}
 
+	public static long getSumFromOneTo(long n) {
+		return n * (n + 1) / 2;
+	}
+
+	public static List<Double> getFactorsOf(long number) {
+		List<Double> factors = DoubleStream.iterate(1, d -> d + 1)
+				.limit(number)
+				.filter(divides(number))
+				.boxed()
+				.collect(Collectors.toList());
+		return factors;
+	}
+
+	public static long getTriangleNumber(long limit) {
+		return getSumFromOneTo(limit);
+	}
+
 }
