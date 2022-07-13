@@ -61,39 +61,39 @@ public class HighlyDivisibleTriangularNumberTest {
 
 	@Test
 	public void getFirstTriangleNumberWithAtLeast1FactorsShouldReturn1() {
-		Assert.assertEquals(1, HighlyDivisibleTriangularNumber.getFirstTriangleNumberWithAtLeastNFactors(1));
+		Assert.assertEquals(1, NumberUtils.getFirstTriangleNumberWithAtLeastNFactors(1));
 	}
 
 	@Test
 	public void getFirstTriangleNumberWithAtLeast2FactorsShouldReturn3() {
-		Assert.assertEquals(3, HighlyDivisibleTriangularNumber.getFirstTriangleNumberWithAtLeastNFactors(2));
+		Assert.assertEquals(3, NumberUtils.getFirstTriangleNumberWithAtLeastNFactors(2));
 	}
 
 	@Test
 	public void getFirstTriangleNumberWithAtLeast3FactorsShouldReturn6() {
-		Assert.assertEquals(6, HighlyDivisibleTriangularNumber.getFirstTriangleNumberWithAtLeastNFactors(3));
+		Assert.assertEquals(6, NumberUtils.getFirstTriangleNumberWithAtLeastNFactors(3));
 	}
 
 	@Test
 	public void getFirstTriangleNumberWithAtLeast5FactorsShouldReturn28() {
-		Assert.assertEquals(28, HighlyDivisibleTriangularNumber.getFirstTriangleNumberWithAtLeastNFactors(5));
+		Assert.assertEquals(28, NumberUtils.getFirstTriangleNumberWithAtLeastNFactors(5));
 	}
 
 	@Test
 	public void getFirstTriangleNumberWithAtLeast100FactorsShouldReturn73920() {
-		Assert.assertEquals(73920, HighlyDivisibleTriangularNumber.getFirstTriangleNumberWithAtLeastNFactors(100));
+		Assert.assertEquals(73920, NumberUtils.getFirstTriangleNumberWithAtLeastNFactors(100));
 	}
 
 	// @Test
 	// lasts 15s
 	public void getFirstTriangleNumberWithAtLeast300FactorsShouldReturn2162160() {
-		Assert.assertEquals(2162160, HighlyDivisibleTriangularNumber.getFirstTriangleNumberWithAtLeastNFactors(300));
+		Assert.assertEquals(2162160, NumberUtils.getFirstTriangleNumberWithAtLeastNFactors(300));
 	}
 
 	// @Test
 	// lasts 3000s - Activate with caution or if you have some time at hand
 	public void getFirstTriangleNumberWithAtLeast500FactorsShouldReturn2162160() {
-		Assert.assertEquals(76576500, HighlyDivisibleTriangularNumber.getFirstTriangleNumberWithAtLeastNFactors(500));
+		Assert.assertEquals(76576500, NumberUtils.getFirstTriangleNumberWithAtLeastNFactors(500));
 	}
 
 	// @Test

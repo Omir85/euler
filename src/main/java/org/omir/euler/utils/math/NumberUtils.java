@@ -13,6 +13,7 @@ import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
+import org.omir.euler.exception.ResultNotFoundException;
 import org.omir.euler.utils.string.StringUtils;
 
 public class NumberUtils {
@@ -255,6 +256,21 @@ public class NumberUtils {
 
 	public static long getTriangleNumber(long limit) {
 		return getSumFromOneTo(limit);
+	}
+
+	public static long getFirstTriangleNumberWithAtLeastNFactors(int numberOfFactors) {
+		return NumberUtils.getFirstTriangleNumberWithAtLeastNFactorsStartingWith(numberOfFactors, 1);
+	}
+
+	public static long getFirstTriangleNumberWithAtLeastNFactorsStartingWith(int numberOfFactors, int startingNumber) {
+		for (int i = startingNumber; i < Integer.MAX_VALUE; i++) {
+			long triangleNumber = getTriangleNumber(i);
+			int currentNumberOfFactors = getFactorsOf(triangleNumber).size();
+			if (currentNumberOfFactors >= numberOfFactors) {
+				return triangleNumber;
+			}
+		}
+		throw new ResultNotFoundException();
 	}
 
 }

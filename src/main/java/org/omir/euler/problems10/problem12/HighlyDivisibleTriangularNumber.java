@@ -1,6 +1,5 @@
 package org.omir.euler.problems10.problem12;
 
-import org.omir.euler.exception.ResultNotFoundException;
 import org.omir.euler.utils.math.NumberUtils;
 
 /**
@@ -31,22 +30,7 @@ import org.omir.euler.utils.math.NumberUtils;
 public class HighlyDivisibleTriangularNumber {
 
 	public static void main(String[] args) {
-		System.out.println("The first triangle number to have over five hundred divisors is " + getFirstTriangleNumberWithAtLeastNFactors(500));
-	}
-
-	public static long getFirstTriangleNumberWithAtLeastNFactors(int numberOfFactors) {
-		return getFirstTriangleNumberWithAtLeastNFactorsStartingWith(numberOfFactors, 1);
-	}
-
-	public static long getFirstTriangleNumberWithAtLeastNFactorsStartingWith(int numberOfFactors, int startingNumber) {
-		for (int i = startingNumber; i < Integer.MAX_VALUE; i++) {
-			long triangleNumber = NumberUtils.getTriangleNumber(i);
-			int currentNumberOfFactors = NumberUtils.getFactorsOf(triangleNumber).size();
-			if (currentNumberOfFactors >= numberOfFactors) {
-				return triangleNumber;
-			}
-		}
-		throw new ResultNotFoundException();
+		System.out.println("The first triangle number to have over five hundred divisors is " + NumberUtils.getFirstTriangleNumberWithAtLeastNFactors(500));
 	}
 
 }
